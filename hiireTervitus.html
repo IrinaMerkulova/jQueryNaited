@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery hiire tervitus</title>
+    <!-- jQuery CDN kopeeritid unkompressed kogumik-->
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function punaseks(){
+            $('h2, span#test').css("color", "red");
+        }
+        function mustaks(){
+            $('h2, span#test').css("color", "black");
+        }
+
+        function alusta(){
+            $('h2, span#test').mouseenter(punaseks);
+            $('h2, span#test').mouseleave(mustaks);
+        }
+        function teatis(){
+            alert("Tekst on näidetud!");
+        }
+
+    </script>
+
+</head>
+<body onLoad="alusta();">
+<h2>See on pealkirja tekst</h2>
+<div>Super väike tekst</div>
+
+<div id="magatud" style="position: relative; left:0px; width:200px;">
+    <span id="test">Tekst tekst ja veel kord tekst</span>
+    <br>
+    <span id="test2">Tekst tekst ja veel kord tekst</span>
+</div>
+<input type="button" value="Peida" onClick="$('#magatud').hide(1000);">
+<input type="button" value="Näita" onClick="$('#magatud').show(2000, teatis);">
+<input type="button" value="Paremale" onClick="$('#magatud').animate({left:'300px'}, 2000);">
+<input type="button" value="Vasakule" onClick="$('#magatud').animate({left:'0px'}, 2000);">
+
+</body>
+</html>

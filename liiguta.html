@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+  <script>
+    function liigutus(event, ui){
+      var asukoht=ui.offset;
+      $("#vastusekiht").html(asukoht.top+" "+asukoht.left);
+    }
+
+    function algus(){
+      $("#ala").draggable();
+      $("#ala").bind("drag", liigutus);
+    }
+  </script>
+
+</head>
+
+<body onload="algus()">
+<div id="vastusekiht" >vastus</div>
+<div id="ala" style="background-color: green; height: 50px; width:50px"></div>
+</body>
+</html>
