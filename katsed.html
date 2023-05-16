@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        function liigutus(event, ui){
+            var asukoht=ui.offset;
+            $("#vastusekiht").html(asukoht.top+" "+asukoht.left);
+            //https://pastebin.com/praQBECF
+        }
+
+
+        var lahti=true;
+        function peida_ava(){
+            $('#tekst').slideToggle();
+            if(lahti){
+                lahti=false;
+                $('#nupp').val("AVA");//nupptekst id=nupp value=?
+
+            } else {
+                lahti=true;
+                $('#nupp').val("PEIDA");
+            }
+
+        }
+
+
+
+
+
+        function oranz(){
+            //div-tekst värvitakse oranziks kui hiir liigub teksti peale
+            $('#tekst, h2').css('color','orange');
+        }
+        function must(){
+            //div-tekst värvitakse mustaks kui hiir liigub teksti peale
+            $('#tekst, h2').css('color','black');
+        }
+
+        function start(){
+            $("#ala").draggable();
+            $("#ala").bind("drag", liigutus);
+            $('#tekst, h2').mouseenter(oranz);
+            $('#tekst, h2').mouseleave(must);
+
+
+        }
+    </script>
+</head>
+<body onload="start()">
+<h2>jQuery</h2>
+<ol>
+    <li> jQuery CDN - raamatukogu</li>
+    <li>lisame minified link head osa sisse</li>
+</ol>
+<div id="tekst" style="position: relative; left:0px; width:200px; border:solid 1px;">
+    jQuery ([dʒeɪ kwɪəri]) — набор функций JavaScript, фокусирующийся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими.
+</div>
+<input type="button" value="paremale"
+       onclick="$('#tekst').animate({left: '600px'}, 1000)">
+<input type="button" value="vasakule"
+       onclick="$('#tekst').animate({left: '0px'}, 1000)">
+<input type="button" value="Peida" id="nupp" onclick="peida_ava()">
+<br>
+<div id="vastusekiht" >vastus</div>
+<img src="pall.png" id="ala">
+</body>
+</html>
